@@ -2,8 +2,26 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "cargo",
-			"command": "build",
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"xwin",
+				"build",
+				"--target",
+				"x86_64-pc-windows-msvc"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "build_win"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"build",
+			],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -11,16 +29,47 @@
 			"label": "build"
 		},
 		{
-			"type": "cargo",
-			"command": "xwin",
+			"type": "shell",
+			"command": "cargo",
 			"args": [
-				"test",
+				"test"
 			],
 			"problemMatcher": [
 				"$rustc"
 			],
 			"group": "test",
 			"label": "test_all"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"bench"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "bench_all"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"watch",
+				"--poll",
+				"-q",
+				"-c",
+				"-w",
+				"src/",
+				"-x",
+				"'nextest run --tests test_'",
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "watch_tests"
 		},
 	]
 }
