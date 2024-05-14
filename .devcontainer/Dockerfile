@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/rust:latest
  
 RUN apt update && apt upgrade -y
-RUN apt install coz-profiler
+RUN apt install coz-profiler -y
 
 USER vscode
 RUN rustup component add rustfmt clippy
